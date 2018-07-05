@@ -18,7 +18,8 @@ def get_from_sms_carrier():
             if len(cols) < 6:
                 continue
             mcc, mnc, isp = cols[0], cols[1], cols[5]
-            result[mcc + mnc] = isp
+            if isp:
+                result[mcc + mnc] = isp
 
     return result
 
