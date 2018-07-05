@@ -12,7 +12,8 @@ def main():
     tables = soup.find_all('table', attrs={'class':'wikitable'})
 
     with open(OUT, 'w') as f:
-        [f.write(u'{0}{1}\t{2}\t{3}\n'.format(*cols[:4]).encode('utf8'))
+        f.write('MCC\tMNC\tBrand\tOperator\n')
+        [f.write(u'{0}\t{1}\t{2}\t{3}\n'.format(*cols[:4]).encode('utf8'))
             for table in tables
             for row in table.find_all('tr')
             for cols in [[sanitize(col.text) for col in row.find_all('td')]]
