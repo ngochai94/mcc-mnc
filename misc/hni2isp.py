@@ -59,7 +59,8 @@ def main():
 
     with open('hni2isp.tsv', 'w') as f:
         for hni in result:
-            f.write(u'{0}\t{1}\n'.format(hni, result[hni]).encode('utf8'))
+            if result[hni] != 'unknown':
+                f.write(u'{0}\t{1}\n'.format(hni, result[hni]).encode('utf8'))
 
 
 if __name__ == '__main__':
